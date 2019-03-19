@@ -8,11 +8,19 @@
     <script type="text/javascript" src="./assets/javascript/game.js"></script>
 
 </head>
-<body>
+<body onload="resetPage()" id="initialGameSet">
 <h2>The Psychic Game</h2>
+<div id="games-won"></div>
+<div id="games-lost"></div>
+<div id="guesses-left"></div>
+<div id="guesses-so-far"></div>
+
+<!--<input type="hidden" id=userKeyChoice onkeyup="matchOrNot()">-->
+
+
+<input type="text" id="userKeyChoice" onkeyup="getUserKey()">
 
 
 
-    <input type="button" onclick="getRandomLetter()" value="Reset the game">
 </body>
 </html>
