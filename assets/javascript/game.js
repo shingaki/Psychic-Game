@@ -16,6 +16,22 @@ document.onkeyup = function(event) {
         guessesLeft = (guessesLeft - 1);
         document.getElementById("guesses-left").innerHTML = "Guesses Left: " + guessesLeft + "<br><br>";
 
+
+        if (userGuess === 8) {
+
+            yourGuessesSoFar = (userGuess + ", ");
+        }
+
+        else if (userGuess === 0) {
+            yourGuessesSoFar = (yourGuessesSoFar + userGuess);
+        }
+        else {
+            yourGuessesSoFar = (yourGuessesSoFar + userGuess + ", ");
+        }
+
+        document.getElementById("guesses-so-far").innerHTML = "Your Guesses So Far: " + yourGuessesSoFar + "<br>";
+
+
         if (guessesLeft === 0)
         {
             gamesLost = (gamesLost + 1);
