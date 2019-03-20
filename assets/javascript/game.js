@@ -1,51 +1,90 @@
 // function to get a random letter from the alphabet
 
+var computerGuess;
+var userGuess;
 
-function getRandomLetter()
-{
-    var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-        'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    var computerRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-    console.log(computerRandomLetter);
 
-    return computerRandomLetter;
-}
+document.onkeyup = function(event) {
 
+    // Determines which key was pressed.
+    userGuess = event.key;
+
+    if (userGuess !== computerGuess) {
+        alert("userGuess =" + userGuess);
+        alert("computerGuess = " + computerGuess);
+
+        guessesLeft = (guessesLeft - 1);
+        document.getElementById("guesses-left").innerHTML = "Guesses Left: " + guessesLeft + "<br><br>";
+
+        if (guessesLeft === 0)
+        {
+            gamesLost = (gamesLost + 1);
+            resetPage();
+        }
+    }
+    else if
+        (userGuess === computerGuess)
+    {
+        alert("userGuess = computerGuess");
+
+        gamesWon = (gamesWon + 1);
+        resetPage()
+    }
+};
+
+var gamesWon = 0;
+var gamesLost = 0;
+var guessesLeft;
+var yourGuessesSoFar;
 
 function resetPage(){
 
-    var gamesWon = 0;
-    var gamesLost = 0;
-    var guessesLeft = 9;
-    var yourGuessesSoFar = "";
+    guessesLeft = 9;
+    yourGuessesSoFar = "";
 
     document.getElementById("games-won").innerHTML = "Games Won: " + gamesWon + "<br><br>";
     document.getElementById("games-lost").innerHTML = "Games Lost: " + gamesLost + "<br><br>";
     document.getElementById("guesses-left").innerHTML = "Guesses Left: " + guessesLeft + "<br><br>";
     document.getElementById("guesses-so-far").innerHTML = "Your Guesses So Far: " + yourGuessesSoFar + "<br>";
 
-    var computerLetter = getRandomLetter();
-    console.log(computerLetter);
+    computerGuess = getRandomLetter();
+    console.log(computerGuess);
+
+
+    return guessesLeft;
+    return yourGuessesSoFar;
 
 }
 
 
+function getRandomLetter()
+{
+    var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+        'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+    console.log(computerGuess);
 
-function matchOrNot(userGuess, computerLetter) {
+    return computerGuess;
+}
 
-    console.log("inside matchOrNot function " + computerLetter);
 
 
-    if (computerLetter.toLowerCase() === userGuess.toLowerCase()) {
+function matchOrNot() {
 
-            gamesWon = gamesWon + 1;
+    console.log("inside matchOrNot function " + computerGuess);
 
-            resetPage();
+
+    if (computerGuess.toLowerCase() === userGuess.toLowerCase()) {
+
+        gamesWon = gamesWon + 1;
+
+        resetPage();
 
     }
-        else {
+    else {
 
         guessesLeft = guessesLeft - 1;
+        alert(guessesLeft);
 
         if (guessesLeft === 0) {
             gamesLost = gamesLost + 1;
@@ -56,14 +95,8 @@ function matchOrNot(userGuess, computerLetter) {
 
 
 
-// var userGuess = document.getElementById("userKeyChoice").value;
-// document.getElementById("userKeyChoice").innerHTML = userGuess;
 
-function getUserKey() {
-    var userChoice = document.getElementById("userKeyChoice").value;
-    // document.getElementById("demo").innerHTML = x;
-    console.log(userChoice);
-    matchOrNot(userChoice);
-}
+
+
 
 
