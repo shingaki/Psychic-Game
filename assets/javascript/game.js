@@ -10,8 +10,8 @@ document.onkeyup = function(event) {
     userGuess = event.key;
 
     if (userGuess !== computerGuess) {
-        alert("userGuess =" + userGuess);
-        alert("computerGuess = " + computerGuess);
+        // alert("userGuess =" + userGuess);
+        // alert("computerGuess = " + computerGuess);
 
         guessesLeft = (guessesLeft - 1);
         document.getElementById("guesses-left").innerHTML = "Guesses Left: " + guessesLeft + "<br><br>";
@@ -41,7 +41,7 @@ document.onkeyup = function(event) {
     else if
         (userGuess === computerGuess)
     {
-        alert("userGuess = computerGuess");
+        // alert("userGuess = computerGuess");
 
         gamesWon = (gamesWon + 1);
         resetPage()
